@@ -1,16 +1,11 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import * as Dialog from '@radix-ui/react-dialog';
-import { useEffect, useState } from 'react'
-import styles from '../styles/Home.module.css'
+import * as Separator from '@radix-ui/react-separator';
+import { useState } from 'react'
 
 export default function Home() {
   const [scaleIndex, setScaleIndex] = useState(1)
   const sizes = ['scale-50', 'scale-100', 'scale-150']
-
-  useEffect(() => {
-    console.log("size changed = " + scaleIndex)
-  }, [scaleIndex])
 
   return (
     <>
@@ -21,20 +16,25 @@ export default function Home() {
       </Head>
 
       <div className='h-screen bg-zinc-900'>
-        <div className='fixed top-0'>
+        <div className='md:hidden fixed top-0'>
           <Dialog.Root>
             <Dialog.Trigger asChild>
-              <button className="bg-white rounded-full p-4">
+              <button className="bg-white rounded-full w-8 m-2 aspect-square">
                 ?
               </button>
             </Dialog.Trigger>
             <Dialog.Portal>
               <Dialog.Overlay className='bg-black fixed inset-0 opacity-50' />
-              <Dialog.Content className='bg-white w-1/2 h-1/2 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
-                <Dialog.Title>test</Dialog.Title>
-                <Dialog.Description>testoayldj;kbas</Dialog.Description>
+              <Dialog.Content className='bg-zinc-900 w-2/3 h-2/3 p-4 rounded-lg text-white flex flex-col justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+                <div className='flex flex-col gap-2'>
+                  <Dialog.Title>Astro 101 - Black Holes</Dialog.Title>
+                  <Separator.Root className='border border-white rounded-lg' />
+                  <Dialog.Description>Created by Khang Nguyen for the Creative Work assignment.</Dialog.Description>
+                  <Dialog.Description>This website aims to explain how the amount of material a black hole in a binary system can consume depends on its companion.</Dialog.Description>
+                  <Dialog.Description>Press the Increase/Decrease buttons to see how the interactions between the black hole and the companion star changes.</Dialog.Description>
+                </div>
                 <Dialog.Close asChild>
-                  <button className="bg-white rounded-full p-4">
+                  <button className="bg-white rounded-full p-4 text-black">
                     Close
                   </button>
                 </Dialog.Close>
@@ -44,9 +44,17 @@ export default function Home() {
         </div>
         <div className='flex flex-col min-h-full justify-around items-center'>
           <div className='flex flex-col justify-center items-center gap-2'>
-            <div className='rounded-full bg-white w-32 h-32'/>
-            <div className='bg-white w-32 h-48'/>
-            <div className={`rounded-full bg-white w-32 h-32 ${sizes[scaleIndex]} transition-transform duration-500`}/>
+            <div className='rounded-full bg-white w-12 h-12'/>
+            <div className='w-32 h-48 flex items-center justify-around'>
+              <div className='bg-white w-4 h-full'/>
+              {(scaleIndex === 1 || scaleIndex === 2) && <div className='bg-white w-4 h-full'/>}
+              {(scaleIndex === 1 || scaleIndex === 2) && <div className='bg-white w-4 h-full'/>}
+              {scaleIndex === 2 && <div className='bg-white w-4 h-full'/>}
+              {scaleIndex === 2 && <div className='bg-white w-4 h-full'/>}
+            </div>
+            <div className={`relative rounded-full w-52 h-52 border border-white`}>
+              <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white w-32 h-32 ${sizes[scaleIndex]} transition-transform duration-500`}/>
+            </div>
           </div>
           <div className='flex justify-center items-center gap-8'>
             <button className='bg-white rounded-lg p-4 hover:scale-110 disabled:opacity-50 transition-all duration-300' onClick={() => setScaleIndex(scaleIndex - 1)} disabled={scaleIndex === 0}>Decrease Star Size</button>
