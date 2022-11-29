@@ -15,7 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className='h-screen bg-zinc-900'>
+      <div className='relative h-screen bg-zinc-900'>
         <div className='md:hidden fixed top-0'>
           <Dialog.Root>
             <Dialog.Trigger asChild>
@@ -24,8 +24,8 @@ export default function Home() {
               </button>
             </Dialog.Trigger>
             <Dialog.Portal>
-              <Dialog.Overlay className='bg-black fixed inset-0 opacity-50' />
-              <Dialog.Content className='bg-zinc-900 w-2/3 h-2/3 p-4 rounded-lg text-white flex flex-col justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+              <Dialog.Overlay className='bg-black z-20 fixed inset-0 opacity-50' />
+              <Dialog.Content className='z-50 bg-zinc-900 w-2/3 h-2/3 p-4 rounded-lg text-white flex flex-col justify-between fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
                 <div className='flex flex-col gap-2'>
                   <Dialog.Title>Astro 101 - Black Holes</Dialog.Title>
                   <Separator.Root className='border border-white rounded-lg' />
@@ -43,17 +43,19 @@ export default function Home() {
           </Dialog.Root>
         </div>
         <div className='flex flex-col min-h-full justify-around items-center'>
-          <div className='flex flex-col justify-center items-center gap-2'>
-            <div className='rounded-full bg-white w-12 h-12'/>
-            <div className='w-32 h-48 flex items-center justify-around'>
-              <div className='bg-white w-4 h-full'/>
-              {(scaleIndex === 1 || scaleIndex === 2) && <div className='bg-white w-4 h-full'/>}
-              {(scaleIndex === 1 || scaleIndex === 2) && <div className='bg-white w-4 h-full'/>}
+          <div className='relative flex flex-col justify-center items-center gap-[98px]'>
+            <div className={`relative w-60 h-60 border rounded-bl-[50%] rounded-tr-[50%] rounded-tl-[50%] rotate-45 border-white`}>
+              <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white w-12 h-12'/>
+            </div>
+            <div className='absolute z-10 w-32 h-48 flex items-center justify-around'>
               {scaleIndex === 2 && <div className='bg-white w-4 h-full'/>}
+              {(scaleIndex === 1 || scaleIndex === 2) && <div className='bg-white w-4 h-full'/>}
+              <div className='bg-red-500 w-4 h-full'/>
+              {(scaleIndex === 1 || scaleIndex === 2) && <div className='bg-white w-4 h-full'/>}
               {scaleIndex === 2 && <div className='bg-white w-4 h-full'/>}
             </div>
-            <div className={`relative rounded-full w-52 h-52 border border-white`}>
-              <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white w-32 h-32 ${sizes[scaleIndex]} transition-transform duration-500`}/>
+            <div className={`relative w-60 h-60 border rounded-bl-[50%] rounded-br-[50%] rounded-tl-[50%] -rotate-45 border-white`}>
+              <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-yellow-400 w-32 h-32 ${sizes[scaleIndex]} shadow-sun animate-radiate transition duration-500`}/>
             </div>
           </div>
           <div className='flex justify-center items-center gap-8'>
