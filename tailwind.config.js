@@ -25,9 +25,9 @@ module.exports = {
           '100%': { opacity: 0, transform: 'translateY(-300%)' },
         },
         flow2: {
-          '0%': { opacity: 0, transform: 'translateY(500%)' },
+          '0%': { opacity: 0, transform: 'translateY(600%)' },
           '50%': { opacity: 1 },
-          '100%': { opacity: 0, transform: 'translateY(-500%)' },
+          '100%': { opacity: 0, transform: 'translateY(-600%)' },
         },
         flow3: {
           '0%': { opacity: 0, transform: 'translateY(1000%)' },
