@@ -19,6 +19,7 @@
     "next": "13.0.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "tailwindcss-animation-delay": "^1.0.7",
     "tailwindcss-radix": "^2.6.1",
     "typescript": "4.9.3"
   },
