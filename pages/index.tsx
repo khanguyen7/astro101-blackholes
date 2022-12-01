@@ -58,7 +58,7 @@ export default function Home() {
             <p>Created by <a href='https://khanguyen.dev/' target="_blank" rel="noreferrer" className='text-blue-500'>Khang Nguyen</a> for the Creative Work assignment.</p>
           </div>
         </div>
-        <div className='flex flex-col min-h-full justify-center gap-8 items-center'>
+        <div className='flex flex-col min-h-screen justify-center gap-8 items-center'>
           <div className='relative flex flex-col justify-center items-center gap-[98px]'>
             <div className={`relative w-60 h-60 border rounded-bl-[50%] rounded-tr-[50%] rounded-tl-[50%] rotate-45 border-white`}>
               <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black w-12 h-12'/>
